@@ -15,7 +15,7 @@ const PostSchema = new Schema({
   avatar: {
     type: String
   },
-  upvote: [
+  upvotes: [
     {
       user: {
         type: Schema.Types.ObjectId

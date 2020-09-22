@@ -94,4 +94,50 @@ router.delete('/:id', authorize, async (req, res) => {
   }
 });
 
+// @route   PUT api/posts/upvote/:id
+// @desc    Upvote a post
+// @access  Private
+router.put('/upvote/:id', authorize, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    // Check if the post has already been upvoted
+    if (post.upvotes.some((upvote) => upvote.user.toString() === req.user.id)) {
+      // .some() => check whether an element is same
+      return res.status(400).json({ msg: 'Post already upvoted' });
+    }
+    post.upvotes.unshift({ user: req.user.id }); // unshift => put in beginning of array
+    await post.save();
+    return res.json(post.upvotes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// @route   PUT api/posts/downvote/:id
+// @desc    Downvote a post
+// @access  Private
+router.put('/downvote/:id', authorize, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    // Check if the post has not yet been Unvoted
+    if (
+      !post.upvotes.some((upvote) => upvote.user.toString() === req.user.id) // .some() => check whether an element is same
+    ) {
+      return res.status(400).json({ msg: 'Post has not yet been upvoted' });
+    }
+
+    // remove the upvote
+    post.upvotes = post.upvotes.filter(
+      ({ user }) => user.toString() !== req.user.id
+    );
+
+    await post.save();
+    return res.json(post.upvotes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;
