@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const PostSchema = new mongoose.Schema({
+const PostSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId
   },
@@ -17,14 +18,14 @@ const PostSchema = new mongoose.Schema({
   upvote: [
     {
       user: {
-        type: Schema.Type.ObjectId
+        type: Schema.Types.ObjectId
       }
     }
   ],
   comments: [
     {
       user: {
-        type: Schema.Type.ObjectId
+        type: Schema.Types.ObjectId
       },
       text: {
         type: String,
