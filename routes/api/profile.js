@@ -7,7 +7,6 @@ const axios = require('axios');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
-const request = require('request');
 
 // @route   GET api/profile/me
 // @desc    Get current user profile
