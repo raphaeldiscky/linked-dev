@@ -40,7 +40,6 @@ const Register = ({ setAlert, register }) => {
             name='name'
             value={name}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
         <div className='form-group'>
@@ -61,7 +60,6 @@ const Register = ({ setAlert, register }) => {
             type='password'
             placeholder='Password'
             name='password'
-            minLength='6'
             value={password}
             onChange={(e) => onChange(e)}
           />
@@ -71,7 +69,6 @@ const Register = ({ setAlert, register }) => {
             type='password'
             placeholder='Confirm Password'
             name='password2'
-            minLength='6'
             value={password2}
             onChange={(e) => onChange(e)}
           />
