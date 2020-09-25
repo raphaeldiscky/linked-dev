@@ -258,6 +258,11 @@ img {
   border: 1px solid #ccc;
 }
 
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 .form input[type='submit'],
 button {
   font: inherit;
