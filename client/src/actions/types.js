@@ -20,7 +20,9 @@ export const LOGOUT = 'LOGOUT';
 // Profile
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
-// Clear Profile when logout
+// Clear Profile when logout and delete acoount
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
-// Update profile / Add experience
+// Update profile => Add, Delete Experience and Education
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+// Delete acount and profile
+export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
