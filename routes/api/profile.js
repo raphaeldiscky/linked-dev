@@ -161,7 +161,10 @@ router.put(
     [
       check('title', 'Title is required').not().isEmpty(),
       check('company', 'Company is required').not().isEmpty(),
-      check('from', 'From date is required').not().isEmpty()
+      check('from', 'From date is required and needs to be from the past')
+        .not()
+        .isEmpty()
+        .custom((value, { req }) => (req.body.to ? value < req.body.to : true))
     ]
   ],
   async (req, res) => {
@@ -194,7 +197,10 @@ router.put(
       profile.experience.unshift(newExp);
       await profile.save();
       res.json(profile);
-    } catch (err) {}
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
   }
 );
 

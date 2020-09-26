@@ -20,6 +20,7 @@ export const LOGOUT = 'LOGOUT';
 // Profile
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
-
 // Clear Profile when logout
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+// Update profile / Add experience
+export const UPDATE_PROFILE = 'UPDATE_PROFILE';
