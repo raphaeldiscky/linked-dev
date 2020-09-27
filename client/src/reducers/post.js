@@ -1,5 +1,6 @@
 import {
   GET_POSTS,
+  GET_POST,
   POST_ERROR,
   UPDATE_UPVOTES,
   DELETE_POST,
@@ -20,6 +21,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         posts: payload, // fill posts with payload from the action file
+        loading: false
+      };
+    case GET_POST:
+      return {
+        ...state,
+        post: payload,
         loading: false
       };
     case ADD_POST:
