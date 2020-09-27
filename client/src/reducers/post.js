@@ -1,4 +1,10 @@
-import { GET_POSTS, POST_ERROR, UPDATE_UPVOTES } from '../actions/types';
+import {
+  GET_POSTS,
+  POST_ERROR,
+  UPDATE_UPVOTES,
+  DELETE_POST,
+  ADD_POST
+} from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -14,6 +20,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         posts: payload, // fill posts with payload from the action file
+        loading: false
+      };
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [payload, ...state.posts], // put payload first because we want the latest post to be on top
+        loading: false
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== payload), // we returning all posts, except the postId that matches with payload, the payload is just the id
         loading: false
       };
     case POST_ERROR:

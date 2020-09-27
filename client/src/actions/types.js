@@ -31,5 +31,9 @@ export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 // POST
 export const GET_POSTS = 'GET_POSTS';
 export const POST_ERROR = 'POST_ERROR';
-// Upvotes
+// Upvotes and unvote
 export const UPDATE_UPVOTES = 'UPDATE_UPVOTES';
+// Delete post
+export const DELETE_POST = 'DELETE_POST';
+// Add post
+export const ADD_POST = 'ADD_POST';
