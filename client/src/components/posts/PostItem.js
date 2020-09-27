@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
+import { addUpvote, removeUpvote } from '../../actions/post';
 
 const PostItem = ({
+  addUpvote,
+  removeUpvote,
   auth,
   post: { _id, text, name, avatar, user, upvotes, comments, date }
 }) => {
@@ -21,11 +24,19 @@ const PostItem = ({
         <p class='post-date'>
           Posted on <Moment format='DD/MM/YYYY'>{date}</Moment>
         </p>
-        <button type='button' class='btn btn-light'>
+        <button
+          onClick={(e) => addUpvote(_id)}
+          type='button'
+          class='btn btn-light'
+        >
           <i class='fas fa-angle-up'></i>{' '}
           <span>{upvotes.length > 0 && <span>{upvotes.length}</span>}</span>
         </button>
-        <button type='button' class='btn btn-light'>
+        <button
+          onClick={(e) => removeUpvote(_id)}
+          type='button'
+          class='btn btn-light'
+        >
           <i class='fas fa-angle-down'></i>
         </button>
         <Link to={`/post/${_id}`} class='btn btn-primary'>
@@ -45,6 +56,8 @@ const PostItem = ({
 };
 
 PostItem.propTypes = {
+  addUpvote: PropTypes.func.isRequired,
+  removeUpvote: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -53,4 +66,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {})(PostItem);
+export default connect(mapStateToProps, { addUpvote, removeUpvote })(PostItem);

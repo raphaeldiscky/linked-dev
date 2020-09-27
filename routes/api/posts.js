@@ -114,10 +114,10 @@ router.put('/upvote/:id', authorize, async (req, res) => {
   }
 });
 
-// @route   PUT api/posts/downvote/:id
-// @desc    Downvote a post
+// @route   PUT api/posts/unvote/:id
+// @desc    Unvote a post
 // @access  Private
-router.put('/downvote/:id', authorize, async (req, res) => {
+router.put('/unvote/:id', authorize, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     // Check if the post has not yet been Unvoted
