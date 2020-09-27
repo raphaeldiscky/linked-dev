@@ -19,6 +19,8 @@ export const LOGOUT = 'LOGOUT';
 
 // Profile
 export const GET_PROFILE = 'GET_PROFILE';
+export const GET_PROFILES = 'GET_PROFILES';
+export const GET_REPOS = 'GET_REPOS';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 // Clear Profile when logout and delete acoount
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
