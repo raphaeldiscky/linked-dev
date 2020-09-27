@@ -38,3 +38,6 @@ export const UPDATE_UPVOTES = 'UPDATE_UPVOTES';
 export const DELETE_POST = 'DELETE_POST';
 // Add post
 export const ADD_POST = 'ADD_POST';
+// Comment
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
