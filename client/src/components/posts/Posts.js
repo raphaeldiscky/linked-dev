@@ -10,7 +10,8 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-  return loading ? (
+
+  return loading || posts === 0 ? (
     <Spinner />
   ) : (
     <Fragment>
