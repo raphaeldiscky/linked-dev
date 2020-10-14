@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { setAlertDanger } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = ({ setAlertDanger, register, isAuthenticated }) => {
@@ -82,7 +81,6 @@ const Register = ({ setAlertDanger, register, isAuthenticated }) => {
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Register' />
-        <ToastContainer autoClose={4000} />
       </form>
       <p className='my-1'>
         Already have an account? <Link to='/login'>Sign In</Link>
