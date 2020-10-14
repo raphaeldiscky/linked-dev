@@ -1,11 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setAlert } from '../../actions/alert';
+import { setAlertDanger } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlertDanger, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,7 +23,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert('Passwords do not match', 'danger'); //'danger' is from App.css
+      setAlertDanger('Passwords do not match'); //'danger' is from App.css
     } else {
       register({ name, email, password });
     }
@@ -80,6 +82,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Register' />
+        <ToastContainer autoClose={4000} />
       </form>
       <p className='my-1'>
         Already have an account? <Link to='/login'>Sign In</Link>
@@ -89,7 +92,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired,
+  setAlertDanger: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
@@ -98,4 +101,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated // we get all initialState from auth reducer, but will only isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlert, register })(Register); // allow us to access props.setAlert, props.register, and props.isAuthenticated
+export default connect(mapStateToProps, { setAlertDanger, register })(Register); // allow us to access props.setAlert, props.register, and props.isAuthenticated

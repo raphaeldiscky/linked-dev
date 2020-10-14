@@ -12,6 +12,10 @@ import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
 
+import { toast } from 'react-toastify';
+
+toast.configure();
+
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }

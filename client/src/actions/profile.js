@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setAlert } from './alert';
+import { setAlertSuccess, setAlertDanger } from './alert';
 import {
   GET_PROFILE,
   GET_PROFILES,
@@ -89,14 +89,14 @@ export const createProfile = (formData, history, edit = false) => async (
       type: GET_PROFILE,
       payload: res.data
     });
-    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
+    dispatch(setAlertSuccess(edit ? 'Profile Updated' : 'Profile Created'));
     if (!edit) {
       history.push('/dashboard'); // we can't use <Redirect/> in action, so use history
     }
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlertDanger(error.msg)));
     }
     dispatch({
       type: PROFILE_ERROR,
@@ -119,13 +119,13 @@ export const addExperience = (formData, history) => async (dispatch) => {
       type: UPDATE_PROFILE,
       payload: res.data
     });
-    dispatch(setAlert('Experience Added', 'success'));
+    dispatch(setAlertSuccess('Experience Added'));
 
     history.push('/dashboard'); // we can't use <Redirect/> in action, so use history
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlertDanger(error.msg)));
     }
     dispatch({
       type: PROFILE_ERROR,
@@ -147,13 +147,13 @@ export const addEducation = (formData, history) => async (dispatch) => {
       type: UPDATE_PROFILE,
       payload: res.data
     });
-    dispatch(setAlert('Education Added', 'success'));
+    dispatch(setAlertSuccess('Education Added'));
 
     history.push('/dashboard');
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlertDanger(error.msg)));
     }
     dispatch({
       type: PROFILE_ERROR,
@@ -170,7 +170,7 @@ export const deleteExperience = (id) => async (dispatch) => {
       type: UPDATE_PROFILE,
       payload: res.data
     });
-    dispatch(setAlert('Experience Deleted', 'success'));
+    dispatch(setAlertSuccess('Experience Deleted'));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -187,7 +187,7 @@ export const deleteEducation = (id) => async (dispatch) => {
       type: UPDATE_PROFILE,
       payload: res.data
     });
-    dispatch(setAlert('Education Deleted', 'success'));
+    dispatch(setAlertSuccess('Education Deleted'));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -203,7 +203,7 @@ export const deleteAccount = () => async (dispatch) => {
       await axios.delete(`api/profile`);
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });
-      dispatch(setAlert('Your account has been permanently deleted'));
+      dispatch(setAlertSuccess('Your account has been permanently deleted'));
     } catch (err) {
       dispatch({
         type: PROFILE_ERROR,

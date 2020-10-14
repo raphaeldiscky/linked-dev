@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setAlert } from './alert';
+import { setAlertSuccess } from './alert';
 import {
   GET_POSTS,
   GET_POST,
@@ -67,7 +67,7 @@ export const deletePost = (id) => async (dispatch) => {
       type: DELETE_POST,
       payload: id // payload only send id, so that reducer know how to filter out the posts that got deleted from UI
     });
-    dispatch(setAlert('Post Deleted', 'success'));
+    dispatch(setAlertSuccess('Post Deleted'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -89,7 +89,7 @@ export const addPost = (formData) => async (dispatch) => {
       type: ADD_POST,
       payload: res.data
     });
-    dispatch(setAlert('Post Created', 'success'));
+    dispatch(setAlertSuccess('Post Created'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -131,7 +131,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
       type: ADD_COMMENT,
       payload: res.data
     });
-    dispatch(setAlert('Comment Added', 'success'));
+    dispatch(setAlertSuccess('Comment Added'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -148,7 +148,7 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
       type: DELETE_COMMENT,
       payload: commentId // payload is commentId so we know which one to remove in the state within the UI
     });
-    dispatch(setAlert('Comment Deleted', 'success'));
+    dispatch(setAlertSuccess('Comment Deleted'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
