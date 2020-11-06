@@ -53,7 +53,6 @@ const CreateProfile = ({ createProfile, history }) => {
         <i className='fas fa-user'></i> Let's get some information to make your
         profile stand out
       </p>
-      <small>* = required field</small>
       <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
           <select
@@ -61,7 +60,7 @@ const CreateProfile = ({ createProfile, history }) => {
             value={jobstatus}
             onChange={(e) => onChange(e)}
           >
-            <option value='0'>* Select Professional Status</option>
+            <option value='0'>Select Professional Status</option>
             <option value='Developer'>Developer</option>
             <option value='Junior Developer'>Junior Developer</option>
             <option value='Senior Developer'>Senior Developer</option>
@@ -114,7 +113,7 @@ const CreateProfile = ({ createProfile, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* Skills'
+            placeholder='Skills'
             name='skills'
             value={skills}
             onChange={(e) => onChange(e)}
@@ -216,9 +215,9 @@ const CreateProfile = ({ createProfile, history }) => {
           </Fragment>
         )}
 
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link className='btn btn-light my-1' to='/dashboard'>
-          Go Back
+        <input type='submit' className='btn btn-primary my-1 btn-float-right' />
+        <Link className='btn btn-light my-1 btn-float-right' to='/dashboard'>
+          Cancel
         </Link>
       </form>
     </Fragment>

@@ -143,7 +143,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 // Delete comment
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+    await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
     dispatch({
       type: DELETE_COMMENT,
       payload: commentId // payload is commentId so we know which one to remove in the state within the UI

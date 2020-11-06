@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
 function ProfileExperience({
-  experience: { company, title, location, current, to, from, description }
+  experience: { company, title, to, from, description }
 }) {
   return (
     <div>

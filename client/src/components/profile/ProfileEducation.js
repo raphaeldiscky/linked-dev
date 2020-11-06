@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
 function ProfileEducation({
-  education: { school, degree, fieldofstudy, current, to, from, description }
+  education: { school, degree, fieldofstudy, to, from, description }
 }) {
   return (
     <div>

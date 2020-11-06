@@ -35,7 +35,6 @@ const AddEducation = ({ addEducation, history }) => {
         <i className='fas fa-code-branch' /> Add any school that you have
         attended
       </p>
-      <small>* = required field</small>
       <form
         className='form'
         onSubmit={(e) => {
@@ -46,7 +45,7 @@ const AddEducation = ({ addEducation, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* School'
+            placeholder='School'
             name='school'
             value={school}
             onChange={onChange}
@@ -55,7 +54,7 @@ const AddEducation = ({ addEducation, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* Degree or Certificate'
+            placeholder='Degree or Certificate'
             name='degree'
             value={degree}
             onChange={onChange}
@@ -108,9 +107,9 @@ const AddEducation = ({ addEducation, history }) => {
             onChange={onChange}
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link className='btn btn-light my-1' to='/dashboard'>
-          Go Back
+        <input type='submit' className='btn btn-primary my-1 btn-float-right' />
+        <Link className='btn btn-light my-1 btn-float-right' to='/dashboard'>
+          Cancel
         </Link>
       </form>
     </Fragment>

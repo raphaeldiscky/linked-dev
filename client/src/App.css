@@ -1,7 +1,8 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
-  --dark-color: #343a40;
+  --light-cyan: #66fcf1;
+  --primary-color: #1aabc2;
+  --dark-color: #0b0c10;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
@@ -137,6 +138,7 @@ img {
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
+  border-radius: 1.5rem;
 }
 
 .badge {
@@ -154,6 +156,10 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+}
+
+.btn-float-right {
+  float: right;
 }
 
 .btn-primary,
@@ -180,18 +186,12 @@ img {
   color: #fff;
 }
 
-.btn-danger,
-.bg-danger,
-.badge-danger,
-.alert-danger {
+.btn-danger {
   background: var(--danger-color);
   color: #fff;
 }
 
-.btn-success,
-.bg-success,
-.badge-success,
-.alert-success {
+.btn-success {
   background: var(--success-color);
   color: #fff;
 }
@@ -256,6 +256,7 @@ img {
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
+  border-radius: 0.5rem;
 }
 
 textarea {
@@ -278,25 +279,43 @@ button {
 }
 
 .form .social-input i.fa-twitter {
-  color: #38a1f3;
+  color: #1da1f2;
 }
 .form .social-input i.fa-facebook {
-  color: #3b5998;
+  color: #4267b2;
 }
 .form .social-input i.fa-instagram {
-  color: #3f729b;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .form .social-input i.fa-youtube {
-  color: #c4302b;
+  color: #ff0000;
 }
 .form .social-input i.fa-linkedin {
-  color: #0077b5;
+  color: #2867b2;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  width: 100%;
 }
 
 .table th,
 .table td {
-  padding: 1rem;
-  text-align: left;
+  width: 25%;
+  padding: 0.75rem;
+  vertical-align: top;
 }
 
 .table th {
@@ -313,7 +332,6 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
   opacity: 0.9;
 }
 
@@ -328,17 +346,24 @@ button {
 }
 
 .navbar a:hover {
-  color: var(--primary-color);
+  color: var(--light-cyan);
 }
 
 .navbar .welcome span {
   margin-right: 0.6rem;
 }
 
+/* Toastify */
+
+.Toastify__toast-container--top-right {
+  top: 4.75rem;
+  right: 0.75rem;
+}
+
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: url('./img/landing-img.jpg') no-repeat center center/cover;
   height: 100vh;
 }
 
@@ -464,11 +489,16 @@ button {
   padding: 0.5rem;
 }
 
+.bg-primary {
+  border-radius: 0.5rem;
+}
+
 .post {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
   align-items: center;
+  border-radius: 0.5rem;
 }
 
 .post > div:first-child {

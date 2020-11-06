@@ -27,7 +27,6 @@ const AddExperience = ({ addExperience, history }) => {
         <i className='fas fa-code-branch' /> Add any developer/programming
         positions that you have had in the past
       </p>
-      <small>* = required field</small>
       <form
         className='form'
         onSubmit={(e) => {
@@ -38,7 +37,7 @@ const AddExperience = ({ addExperience, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* Job Title'
+            placeholder='Job Title'
             name='title'
             value={title}
             onChange={onChange}
@@ -47,7 +46,7 @@ const AddExperience = ({ addExperience, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* Company'
+            placeholder='Company'
             name='company'
             value={company}
             onChange={onChange}
@@ -100,9 +99,9 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={onChange}
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link className='btn btn-light my-1' to='/dashboard'>
-          Go Back
+        <input type='submit' className='btn btn-primary my-1 btn-float-right' />
+        <Link className='btn btn-light my-1 btn-float-right' to='/dashboard'>
+          Cancel
         </Link>
       </form>
     </Fragment>
