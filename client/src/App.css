@@ -6,6 +6,7 @@
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --grey-color: #1f2833;
 }
 
 * {
@@ -54,6 +55,12 @@ img {
 
 .large {
   font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.medium {
+  font-size: 2rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 }

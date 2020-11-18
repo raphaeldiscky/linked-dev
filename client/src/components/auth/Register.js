@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setAlertDanger } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import Meta from '../layout/Meta';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = ({ setAlertDanger, register, isAuthenticated }) => {
@@ -35,6 +36,7 @@ const Register = ({ setAlertDanger, register, isAuthenticated }) => {
 
   return (
     <Fragment>
+      <Meta title={'Sign Up | LinkedDev'} />
       <h1 className='large text-primary'>Sign Up</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Create Your Account
@@ -76,7 +78,11 @@ const Register = ({ setAlertDanger, register, isAuthenticated }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <input type='submit' className='btn btn-primary' value='Register' />
+        <input
+          type='submit'
+          className='btn btn-primary btn-float-right'
+          value='Register'
+        />
       </form>
       <p className='my-1'>
         Already have an account? <Link to='/login'>Sign In</Link>

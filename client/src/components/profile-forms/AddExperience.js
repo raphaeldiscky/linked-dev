@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
+import Meta from '../layout/Meta';
 
 const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,7 @@ const AddExperience = ({ addExperience, history }) => {
 
   return (
     <Fragment>
+      <Meta title={'Add Experience'} />
       <h1 className='large text-primary'>Add An Experience</h1>
       <p className='lead'>
         <i className='fas fa-code-branch' /> Add any developer/programming

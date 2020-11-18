@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'; // withRouter => to pass hi
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
+import Meta from '../layout/Meta';
 
 const initialState = {
   company: '',
@@ -70,7 +71,7 @@ const EditProfile = ({
 
   return (
     <Fragment>
-      {' '}
+      <Meta title={'Edit Profile'} />
       <h1 className='large text-primary'>Create Your Profile</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Let's get some information to make your
@@ -83,7 +84,7 @@ const EditProfile = ({
             value={jobstatus}
             onChange={(e) => onChange(e)}
           >
-            <option value='0'>* Select Professional Status</option>
+            <option value='0'>Select Professional Status</option>
             <option value='Developer'>Developer</option>
             <option value='Junior Developer'>Junior Developer</option>
             <option value='Senior Developer'>Senior Developer</option>
@@ -136,7 +137,7 @@ const EditProfile = ({
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* Skills'
+            placeholder='Skills'
             name='skills'
             value={skills}
             onChange={(e) => onChange(e)}

@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import Meta from '../layout/Meta';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
+      <Meta title={'Sign In | LinkedDev '} />
       <h1 className='large text-primary'>Sign In</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Sign Into Your Account

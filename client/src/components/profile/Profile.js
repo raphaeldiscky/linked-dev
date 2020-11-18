@@ -9,6 +9,7 @@ import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import ProfileGithub from './ProfileGithub';
+import Meta from '../layout/Meta';
 
 const Profile = ({
   getProfileById,
@@ -19,10 +20,12 @@ const Profile = ({
   useEffect(() => {
     getProfileById(match.params.id); // match the id from url
   }, [getProfileById, match.params.id]);
+
   return loading || profile === null ? (
     <Spinner />
   ) : (
     <Fragment>
+      <Meta title={profile.user.name} />
       <Link to='/profiles' className='btn btn-light'>
         Back To Profiles
       </Link>

@@ -7,6 +7,7 @@ import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';
 import Spinner from '../layout/Spinner';
+import Meta from '../layout/Meta';
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
@@ -17,6 +18,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
     <Spinner />
   ) : (
     <Fragment>
+      <Meta title={post.name + ' Discussion'} />
       <Link to='/posts' className='btn'>
         Back to Posts
       </Link>

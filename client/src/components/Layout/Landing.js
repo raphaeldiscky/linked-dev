@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Meta from './Meta';
 
 const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
@@ -9,22 +10,27 @@ const Landing = ({ isAuthenticated }) => {
   }
 
   return (
-    <section className='landing'>
-      <div className='dark-overlay'>
-        <div className='landing-inner'>
-          <h1 className='x-large'>LinkedDev</h1>
-          <p className='lead'>Social media made by developer for developer</p>
-          <div className='buttons'>
-            <Link to='/register' className='btn btn-primary'>
-              Sign Up
-            </Link>
-            <Link to='/login' className='btn btn-light'>
-              Login
-            </Link>
+    <>
+      <Meta title={'LinkedDev'} />
+      <section className='landing'>
+        <div className='dark-overlay'>
+          <div className='landing-inner'>
+            <h1 className='x-large'>LinkedDev</h1>
+            <p className='lead'>
+              Social media made by developers for developers
+            </p>
+            <div className='buttons'>
+              <Link to='/register' className='btn btn-primary'>
+                Sign Up
+              </Link>
+              <Link to='/login' className='btn btn-light'>
+                Login
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
