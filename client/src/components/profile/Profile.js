@@ -21,7 +21,7 @@ const Profile = ({
     getProfileById(match.params.id); // match the id from url
   }, [getProfileById, match.params.id]);
 
-  return loading || !profile ? (
+  return !profile || loading ? (
     <Spinner />
   ) : (
     <Fragment>

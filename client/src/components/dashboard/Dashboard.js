@@ -26,7 +26,7 @@ const Dashboard = ({
     deleteAccount();
   };
 
-  return loading || !profile ? (
+  return !profile && loading ? (
     <Spinner />
   ) : (
     <Fragment>
