@@ -12,7 +12,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     getPosts();
   }, [getPosts]);
 
-  return loading || posts === 0 ? (
+  return loading || !posts ? (
     <Spinner />
   ) : (
     <Fragment>

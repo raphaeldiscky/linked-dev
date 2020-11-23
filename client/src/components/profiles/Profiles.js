@@ -12,7 +12,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     getProfiles();
   }, [getProfiles]);
 
-  return loading || profiles === null ? (
+  return loading ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -23,13 +23,9 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         {'  '}Browse and connect with developers
       </p>
       <div className='profiles'>
-        {profiles.length > 0 ? (
-          profiles.map((profile) => (
-            <ProfileItem key={profile._id} profile={profile} />
-          ))
-        ) : (
-          <h4 className='text-center'>No Profiles Found!</h4>
-        )}
+        {profiles.map((profile) => (
+          <ProfileItem key={profile._id} profile={profile} />
+        ))}
       </div>
     </Fragment>
   );

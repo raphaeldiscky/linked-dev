@@ -21,7 +21,7 @@ const Profile = ({
     getProfileById(match.params.id); // match the id from url
   }, [getProfileById, match.params.id]);
 
-  return loading || profile === null ? (
+  return loading || !profile ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -36,7 +36,7 @@ const Profile = ({
             Edit My Profile
           </Link>
         )}
-      <div class='profile-grid my-1'>
+      <div className='profile-grid my-1'>
         <ProfileTop profile={profile} />
         <ProfileAbout profile={profile} />
         <div className='profile-exp bg-white p-2'>

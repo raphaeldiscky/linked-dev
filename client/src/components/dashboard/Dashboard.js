@@ -11,13 +11,6 @@ import Education from './Education';
 import Meta from '../layout/Meta';
 import AlertDialog from '../layout/AlertDialog';
 
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-
 // use useEffect to get current profile as soon as this page load
 const Dashboard = ({
   getCurrentProfile,
@@ -33,7 +26,7 @@ const Dashboard = ({
     deleteAccount();
   };
 
-  return loading && profile == null ? (
+  return loading || !profile ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -42,7 +35,7 @@ const Dashboard = ({
       <p className='lead'>
         <i className='fas fa-user'></i> Welcome {user && user.name}
       </p>
-      {profile !== null ? (
+      {profile ? (
         <Fragment>
           <DashboardActions />
           <Experience experience={profile.experience} />

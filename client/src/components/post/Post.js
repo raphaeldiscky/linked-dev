@@ -14,7 +14,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
     getPost(match.params.id);
   }, [getPost, match.params.id]);
 
-  return loading || post === null ? (
+  return loading || !post ? (
     <Spinner />
   ) : (
     <Fragment>

@@ -67,6 +67,7 @@ const EditProfile = ({
   const onSubmit = (e) => {
     e.preventDefault();
     createProfile(formData, history, profile ? true : false); // add true because it's an edit
+    history.push('/dashboard');
   };
 
   return (
@@ -131,7 +132,7 @@ const EditProfile = ({
             onChange={(e) => onChange(e)}
           />
           <small className='form-text'>
-            City & state suggested (eg. Boston, MA)
+            City & country suggested (eg. Jakarta, Indonesia)
           </small>
         </div>
         <div className='form-group'>

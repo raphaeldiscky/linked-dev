@@ -94,46 +94,46 @@ router.delete('/:id', authorize, async (req, res) => {
   }
 });
 
-// @route   PUT api/posts/upvote/:id
-// @desc    Upvote a post
+// @route   PUT api/posts/like/:id
+// @desc    Like a post
 // @access  Private
-router.put('/upvote/:id', authorize, async (req, res) => {
+router.put('/like/:id', authorize, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    // Check if the post has already been upvoted
-    if (post.upvotes.some((upvote) => upvote.user.toString() === req.user.id)) {
+    // Check if the post has already been liked
+    if (post.likes.some((like) => like.user.toString() === req.user.id)) {
       // .some() => check whether an element is same
-      return res.status(400).json({ msg: 'Post already upvoted' });
+      return res.status(400).json({ msg: 'Post already liked' });
     }
-    post.upvotes.unshift({ user: req.user.id }); // unshift => put in beginning of array
+    post.likes.unshift({ user: req.user.id }); // unshift => put in beginning of array
     await post.save();
-    return res.json(post.upvotes);
+    return res.json(post.likes);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
   }
 });
 
-// @route   PUT api/posts/unvote/:id
-// @desc    Unvote a post
+// @route   PUT api/posts/unlike/:id
+// @desc    Unlike a post
 // @access  Private
-router.put('/unvote/:id', authorize, async (req, res) => {
+router.put('/unlike/:id', authorize, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    // Check if the post has not yet been Unvoted
+    // Check if the post has not yet been Unliked
     if (
-      !post.upvotes.some((upvote) => upvote.user.toString() === req.user.id) // .some() => check whether an element is same
+      !post.likes.some((like) => like.user.toString() === req.user.id) // .some() => check whether an element is same
     ) {
-      return res.status(400).json({ msg: 'Post has not yet been upvoted' });
+      return res.status(400).json({ msg: 'Post has not yet been liked' });
     }
 
-    // remove the upvote
-    post.upvotes = post.upvotes.filter(
+    // remove the like
+    post.likes = post.likes.filter(
       ({ user }) => user.toString() !== req.user.id
     );
 
     await post.save();
-    return res.json(post.upvotes);
+    return res.json(post.likes);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');

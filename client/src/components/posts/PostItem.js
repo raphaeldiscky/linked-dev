@@ -3,59 +3,59 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
-import { addUpvote, removeUpvote, deletePost } from '../../actions/post';
+import { addLike, removeLike, deletePost } from '../../actions/post';
 
 const PostItem = ({
-  addUpvote,
-  removeUpvote,
+  addLike,
+  removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, upvotes, comments, date },
+  post: { _id, text, name, avatar, user, likes, comments, date },
   showActions
 }) => {
   return (
-    <div class='post bg-white p-1 my-1'>
+    <div className='post bg-white p-1 my-1'>
       <div>
         <Link to={`/profile/${user}`}>
-          <img class='round-img' src={avatar} alt='' />
+          <img className='round-img' src={avatar} alt='' />
           <h4>{name}</h4>
         </Link>
       </div>
       <div>
-        <p class='my-1'>{text}</p>
-        <p class='post-date'>
+        <p className='my-1'>{text}</p>
+        <p className='post-date'>
           Posted on <Moment format='DD/MM/YYYY'>{date}</Moment>
         </p>
         {showActions && (
           <Fragment>
             <button
-              onClick={(e) => addUpvote(_id)}
+              onClick={(e) => addLike(_id)}
               type='button'
-              class='btn btn-light'
+              className='btn btn-light'
             >
-              <i class='fas fa-thumbs-up'></i>{' '}
-              <span>{upvotes.length > 0 && <span>{upvotes.length}</span>}</span>
+              <i className='fas fa-thumbs-up'></i>{' '}
+              <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
             </button>
             <button
-              onClick={(e) => removeUpvote(_id)}
+              onClick={(e) => removeLike(_id)}
               type='button'
-              class='btn btn-light'
+              className='btn btn-light'
             >
-              <i class='fas fa-thumbs-down'></i>
+              <i className='fas fa-thumbs-down'></i>
             </button>
-            <Link to={`/posts/${_id}`} class='btn btn-primary'>
+            <Link to={`/posts/${_id}`} className='btn btn-primary'>
               Discussion{' '}
               {comments.length > 0 && (
-                <span class='comment-count'> {comments.length}</span>
+                <span className='comment-count'> {comments.length}</span>
               )}
             </Link>
             {!auth.loading && user === auth.user._id && (
               <button
                 onClick={() => deletePost(_id)}
                 type='button'
-                class='btn btn-danger'
+                className='btn btn-danger'
               >
-                <i class='fas fa-trash' /> Delete
+                <i className='fas fa-trash' /> Delete
               </button>
             )}
           </Fragment>
@@ -70,8 +70,8 @@ PostItem.defaultProps = {
 };
 
 PostItem.propTypes = {
-  addUpvote: PropTypes.func.isRequired,
-  removeUpvote: PropTypes.func.isRequired,
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
@@ -82,7 +82,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  addUpvote,
-  removeUpvote,
+  addLike,
+  removeLike,
   deletePost
 })(PostItem);

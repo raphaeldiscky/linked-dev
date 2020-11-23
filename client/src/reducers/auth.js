@@ -45,7 +45,8 @@ export default function (state = initialState, action) {
         ...state,
         token: null, //remove token from local storage
         isAuthenticated: false,
-        loading: false
+        loading: false,
+        user: null
       };
     default:
       return state;
