@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'; // withRouter => to pass hi
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
-import Meta from '../layout/Meta';
+import Meta from '../layoutComponents/Meta';
 
 const initialState = {
   company: '',

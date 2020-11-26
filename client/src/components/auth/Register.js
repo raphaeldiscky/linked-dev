@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setAlertDanger } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
-import Meta from '../layout/Meta';
+import Meta from '../layoutComponents/Meta';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = ({ setAlertDanger, register, isAuthenticated }) => {
@@ -98,7 +98,9 @@ Register.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated // we get all initialState from auth reducer, but will only isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated
+  // we get all initialState from auth reducer, but will only isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlertDanger, register })(Register); // allow us to access props.setAlert, props.register, and props.isAuthenticated
+export default connect(mapStateToProps, { setAlertDanger, register })(Register);
+// allow us to access props.setAlert, props.register, and props.isAuthenticated

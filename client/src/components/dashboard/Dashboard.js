@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import { deleteAccount } from '../../actions/profile';
-import Spinner from '../layout/Spinner';
+import Spinner from '../layoutComponents/Spinner';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
-import Meta from '../layout/Meta';
-import AlertDialog from '../layout/AlertDialog';
+import Meta from '../layoutComponents/Meta';
+import AlertDialog from '../layoutComponents/AlertDialog';
 
 // use useEffect to get current profile as soon as this page load
 const Dashboard = ({

@@ -6,8 +6,8 @@ import { getPost } from '../../actions/post';
 import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';
-import Spinner from '../layout/Spinner';
-import Meta from '../layout/Meta';
+import Spinner from '../layoutComponents/Spinner';
+import Meta from '../layoutComponents/Meta';
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {

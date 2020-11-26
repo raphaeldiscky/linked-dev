@@ -13,7 +13,7 @@ import Profiles from '../profiles/Profiles';
 import Profile from '../profile/Profile';
 import Posts from '../posts/Posts';
 import Post from '../post/Post';
-import NotFound from '../layout/NotFound';
+import NotFound from '../layoutComponents/NotFound';
 
 const Routes = () => {
   return (

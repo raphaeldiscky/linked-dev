@@ -2,10 +2,10 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/post';
-import Spinner from '../layout/Spinner';
+import Spinner from '../layoutComponents/Spinner';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
-import Meta from '../layout/Meta';
+import Meta from '../layoutComponents/Meta';
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {

@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
+import Spinner from '../layoutComponents/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
-import Meta from '../layout/Meta';
+import Meta from '../layoutComponents/Meta';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   // useEffect => as soon as this profiles load we need to call that GET_PROFILES action

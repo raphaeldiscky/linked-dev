@@ -9,6 +9,4 @@ const setAuthToken = (token) => {
   }
 };
 
-// when we have a token which you we're just going to send it with every
-// request instead of picking and choosing which request to send it with
 export default setAuthToken;

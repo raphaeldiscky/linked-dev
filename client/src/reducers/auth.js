@@ -24,7 +24,8 @@ export default function (state = initialState, action) {
         ...state,
         isAuthenticated: true,
         loading: false,
-        user: payload // payload include user => name, email, avatar from api/auth
+        user: payload
+        // payload include user => name, email, avatar from api/auth
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
