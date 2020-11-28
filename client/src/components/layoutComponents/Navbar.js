@@ -14,8 +14,9 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     dispatch({ type: CLEAR_PROFILE });
   };
 
-  const clearPost = () => {
+  const clearPostandProfile = () => {
     dispatch({ type: CLEAR_POST });
+    dispatch({ type: CLEAR_PROFILE });
   };
 
   const authLinks = (
@@ -26,7 +27,7 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li>
       <li>
-        <Link to='/posts' onClick={clearPost}>
+        <Link to='/posts' onClick={clearPostandProfile}>
           Posts
         </Link>
       </li>
