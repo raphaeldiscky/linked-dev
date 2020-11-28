@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'; // withRouter => to pass hi
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile';
+import { motion } from 'framer-motion';
 
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
@@ -46,7 +47,11 @@ const CreateProfile = ({ createProfile, history }) => {
   };
 
   return (
-    <Fragment>
+    <motion.div
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.3 }}
+    >
       {' '}
       <h1 className='large text-primary'>Create Your Profile</h1>
       <p className='lead'>
@@ -217,10 +222,10 @@ const CreateProfile = ({ createProfile, history }) => {
 
         <input type='submit' className='btn btn-primary my-1 btn-float-right' />
         <Link className='btn btn-light my-1 btn-float-right' to='/dashboard'>
-          Cancel
+          Back to Dashboard
         </Link>
       </form>
-    </Fragment>
+    </motion.div>
   );
 };
 

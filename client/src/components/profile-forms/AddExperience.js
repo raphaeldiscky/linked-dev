@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
 import Meta from '../layoutComponents/Meta';
+import { motion } from 'framer-motion';
 
 const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,11 @@ const AddExperience = ({ addExperience, history }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <Fragment>
+    <motion.div
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.3 }}
+    >
       <Meta title={'Add Experience'} />
       <h1 className='large text-primary'>Add An Experience</h1>
       <p className='lead'>
@@ -103,10 +108,10 @@ const AddExperience = ({ addExperience, history }) => {
         </div>
         <input type='submit' className='btn btn-primary my-1 btn-float-right' />
         <Link className='btn btn-light my-1 btn-float-right' to='/dashboard'>
-          Cancel
+          Back to Dashboard
         </Link>
       </form>
-    </Fragment>
+    </motion.div>
   );
 };
 

@@ -10,6 +10,7 @@ import Experience from './Experience';
 import Education from './Education';
 import Meta from '../layoutComponents/Meta';
 import AlertDialog from '../layoutComponents/AlertDialog';
+import { motion } from 'framer-motion';
 
 // use useEffect to get current profile as soon as this page load
 const Dashboard = ({
@@ -29,7 +30,11 @@ const Dashboard = ({
   return !profile && loading ? (
     <Spinner />
   ) : (
-    <Fragment>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.5, delayduration: 1 }}
+    >
       <Meta title={'Dashboard'} />
       <h1 className='large text-primary'>Dashboard</h1>
       <p className='lead'>
@@ -58,7 +63,7 @@ const Dashboard = ({
           </Link>
         </Fragment>
       )}
-    </Fragment>
+    </motion.div>
   );
 };
 

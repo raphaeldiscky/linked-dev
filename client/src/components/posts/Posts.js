@@ -6,6 +6,7 @@ import Spinner from '../layoutComponents/Spinner';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
 import Meta from '../layoutComponents/Meta';
+import { motion } from 'framer-motion';
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
@@ -15,7 +16,11 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   return loading || !posts ? (
     <Spinner />
   ) : (
-    <Fragment>
+    <motion.div
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.3 }}
+    >
       <Meta title={'Posts'} />
       <h1 className='large text-primary'>Posts</h1>
       <p className='lead'>
@@ -27,7 +32,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
           <PostItem key={post._id} post={post} />
         ))}
       </div>
-    </Fragment>
+    </motion.div>
   );
 };
 

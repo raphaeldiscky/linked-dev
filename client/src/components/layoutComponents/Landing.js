@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Meta from './Meta';
+import { motion } from 'framer-motion';
 
 const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
@@ -13,22 +14,39 @@ const Landing = ({ isAuthenticated }) => {
     <>
       <Meta title={'LinkedDev'} />
       <section className='landing'>
-        <div className='dark-overlay'>
+        <motion.div className='dark-overlay'>
           <div className='landing-inner'>
-            <h1 className='x-large'>LinkedDev</h1>
-            <p className='lead'>
+            <motion.h1
+              initial={{ y: -200, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className='x-large'
+            >
+              LinkedDev
+            </motion.h1>
+            <motion.p
+              initial={{ y: -200, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className='lead'
+            >
               Social media made by developers for developers
-            </p>
-            <div className='buttons'>
+            </motion.p>
+            <motion.div
+              initial={{ y: -200, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className='buttons'
+            >
               <Link to='/register' className='btn btn-primary'>
                 Sign Up
               </Link>
               <Link to='/login' className='btn btn-light'>
                 Login
               </Link>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );

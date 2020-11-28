@@ -6,6 +6,7 @@ import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import Meta from '../layoutComponents/Meta';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from 'framer-motion';
 
 const Register = ({ setAlertDanger, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -35,7 +36,11 @@ const Register = ({ setAlertDanger, register, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
+    <motion.div
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.3 }}
+    >
       <Meta title={'Sign Up | LinkedDev'} />
       <h1 className='large text-primary'>Sign Up</h1>
       <p className='lead'>
@@ -87,7 +92,7 @@ const Register = ({ setAlertDanger, register, isAuthenticated }) => {
       <p className='my-1'>
         Already have an account? <Link to='/login'>Sign In</Link>
       </p>
-    </Fragment>
+    </motion.div>
   );
 };
 

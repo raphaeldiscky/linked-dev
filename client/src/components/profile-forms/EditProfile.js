@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 import Meta from '../layoutComponents/Meta';
+import { motion } from 'framer-motion';
 
 const initialState = {
   company: '',
@@ -71,7 +72,11 @@ const EditProfile = ({
   };
 
   return (
-    <Fragment>
+    <motion.div
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.3 }}
+    >
       <Meta title={'Edit Profile'} />
       <h1 className='large text-primary'>Create Your Profile</h1>
       <p className='lead'>
@@ -245,7 +250,7 @@ const EditProfile = ({
           Back to Dashboard
         </Link>
       </form>
-    </Fragment>
+    </motion.div>
   );
 };
 

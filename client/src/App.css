@@ -36,6 +36,11 @@ img {
   width: 100%;
 }
 
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
 /* Utilities */
 .container {
   max-width: 1100px;

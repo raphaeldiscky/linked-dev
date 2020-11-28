@@ -5,6 +5,7 @@ import Spinner from '../layoutComponents/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 import Meta from '../layoutComponents/Meta';
+import { motion } from 'framer-motion';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   // useEffect => as soon as this profiles load we need to call that GET_PROFILES action
@@ -15,7 +16,11 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <Fragment>
+    <motion.div
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.5, duration: 0.3 }}
+    >
       <Meta title={'Developers'} />
       <h1 className='large text-primary'>Developers</h1>
       <p className='lead'>
@@ -27,7 +32,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
           <ProfileItem key={profile._id} profile={profile} />
         ))}
       </div>
-    </Fragment>
+    </motion.div>
   );
 };
 
