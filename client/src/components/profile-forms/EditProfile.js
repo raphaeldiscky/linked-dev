@@ -242,7 +242,7 @@ const EditProfile = ({
 
         <input type='submit' className='btn btn-primary my-1 btn-float-right' />
         <Link className='btn btn-light my-1 btn-float-right' to='/dashboard'>
-          Cancel
+          Back to Dashboard
         </Link>
       </form>
     </Fragment>

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import Spinner from '../layoutComponents/Spinner';
 import { getProfileById } from '../../actions/profile';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,7 @@ import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import ProfileGithub from './ProfileGithub';
 import Meta from '../layoutComponents/Meta';
+import { CLEAR_PROFILE } from '../../actions/types';
 
 const Profile = ({
   getProfileById,
@@ -17,16 +18,22 @@ const Profile = ({
   auth,
   match
 }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     getProfileById(match.params.id); // match the id from url
-  }, [getProfileById, match.params.id]);
+  }, [getProfileById, match.params.id, dispatch]);
+
+  const clearProfile = () => {
+    dispatch({ type: CLEAR_PROFILE });
+  };
 
   return !profile || loading ? (
     <Spinner />
   ) : (
     <Fragment>
       <Meta title={profile.user.name} />
-      <Link to='/profiles' className='btn btn-light'>
+      <Link to='/profiles' className='btn btn-light' onClick={clearProfile}>
         Back To Profiles
       </Link>
       {auth.isAuthenticated &&
