@@ -19,7 +19,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     <motion.div
       initial={{ y: -10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.3, duration: 0.3 }}
+      transition={{ delay: 0.3, duration: 0.5 }}
     >
       <Meta title={'Posts'} />
       <h1 className='large text-primary'>Posts</h1>

@@ -35,7 +35,7 @@ const Profile = ({
     <motion.div
       initial={{ y: -10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.5, duration: 0.3 }}
+      transition={{ delay: 0.5, duration: 0.5 }}
     >
       <Meta title={profile.user.name} />
       <Link to='/profiles' className='btn btn-light' onClick={clearProfile}>

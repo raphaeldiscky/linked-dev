@@ -26,7 +26,7 @@ const AddExperience = ({ addExperience, history }) => {
     <motion.div
       initial={{ y: -10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.3, duration: 0.3 }}
+      transition={{ delay: 0.3, duration: 0.5 }}
     >
       <Meta title={'Add Experience'} />
       <h1 className='large text-primary'>Add An Experience</h1>
