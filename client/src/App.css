@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Ubuntu:wght@400;700&display=swap');
 /* Global Styles */
 :root {
   --light-cyan: #66fcf2e7;
   --primary-color: #1aabc2;
   --dark-color: #0b0c10;
-  --light-color: #f4f4f4;
+  --light-color: #fafafa;
   --danger-color: #dc3545;
   --success-color: #28a745;
   --grey-color: #1f2833;
@@ -15,9 +16,22 @@
   padding: 0;
 }
 
+h1 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+}
+
+h2,
+p,
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
 body {
-  font-family: 'Raleway', sans-serif;
   font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   line-height: 1.6;
   background-color: #fff;
   color: #333;
@@ -156,7 +170,7 @@ html {
 .badge {
   font-size: 0.8rem;
   padding: 0.1rem;
-  text-align: center;
+  text-align: left;
   margin: 0.3rem;
   background: var(--light-color);
   color: #333;
@@ -188,6 +202,7 @@ html {
 .alert-light {
   background: var(--light-color);
   color: #333;
+  border-radius: 1.5rem;
 }
 
 .btn-dark,
@@ -208,6 +223,10 @@ html {
   color: #fff;
 }
 
+.btn-sml {
+  font-size: 0.7rem;
+}
+
 .btn-white,
 .bg-white,
 .badge-white,
@@ -215,6 +234,7 @@ html {
   background: #fff;
   color: #333;
   border: #ccc solid 1px;
+  border-radius: 0.5rem;
 }
 
 .btn:hover {
@@ -224,6 +244,7 @@ html {
 .bg-light,
 .badge-light {
   border: #ccc solid 1px;
+  border-radius: 0.5rem;
 }
 
 .round-img {
@@ -521,12 +542,18 @@ button {
   width: 100px;
 }
 
-.post .comment-count {
-  background: var(--light-color);
-  color: var(--primary-color);
+.post .like-count {
+  font-size: 0.7rem;
+}
+
+.fa-thumbs-up {
   padding: 0.1rem 0.2rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
+}
+
+.post .comment-count {
+  color: var(--light-color);
+  padding: 0.1rem 0.2rem;
+  font-size: 0.7rem;
 }
 
 .post .post-date {

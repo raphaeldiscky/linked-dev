@@ -27,7 +27,7 @@ const CommentItem = ({
         {!auth.loading && user === auth.user._id && (
           <button
             type='button'
-            className='btn btn-danger'
+            className='btn btn-danger btn-sml'
             onClick={(e) => deleteComment(postId, _id)}
           >
             <i className='fas fa-trash' />

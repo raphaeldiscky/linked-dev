@@ -10,6 +10,7 @@ import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import ProfileGithub from './ProfileGithub';
 import Meta from '../layoutComponents/Meta';
+import { motion } from 'framer-motion';
 import { CLEAR_PROFILE } from '../../actions/types';
 
 const Profile = ({
@@ -31,7 +32,11 @@ const Profile = ({
   return !profile || loading ? (
     <Spinner />
   ) : (
-    <Fragment>
+    <motion.div
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.5, duration: 0.3 }}
+    >
       <Meta title={profile.user.name} />
       <Link to='/profiles' className='btn btn-light' onClick={clearProfile}>
         Back To Profiles
@@ -77,7 +82,7 @@ const Profile = ({
           <ProfileGithub username={profile.githubusername} />
         )}
       </div>
-    </Fragment>
+    </motion.div>
   );
 };
 

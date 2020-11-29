@@ -28,7 +28,7 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li>
         <Link to='/posts' onClick={clearPostandProfile}>
-          Posts
+          Explore
         </Link>
       </li>
       <li>
@@ -70,7 +70,7 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               onMouseOver={(e) => (e.currentTarget.src = logo1)}
               onMouseOut={(e) => (e.currentTarget.src = logo)}
               alt='LinkedDev Logo'
-              style={{ width: '40px', position: 'absolute' }}
+              style={{ width: '38px', position: 'absolute' }}
             ></img>
           </Link>
         </h1>

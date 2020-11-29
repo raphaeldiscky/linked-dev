@@ -31,31 +31,36 @@ const PostItem = ({
             <button
               onClick={(e) => addLike(_id)}
               type='button'
-              className='btn btn-light'
+              className='btn btn-light btn-sml'
             >
               <i className='fas fa-thumbs-up'></i>{' '}
-              <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+              <span className='like-count'>
+                {likes.length > 0 && <span>{likes.length} likes</span>}
+              </span>
             </button>
             <button
               onClick={(e) => removeLike(_id)}
               type='button'
-              className='btn btn-light'
+              className='btn btn-light btn-sml'
             >
               <i className='fas fa-thumbs-down'></i>
             </button>
-            <Link to={`/posts/${_id}`} className='btn btn-primary'>
-              Discussion{' '}
+            <Link to={`/posts/${_id}`} className='btn btn-primary btn-sml'>
+              <i className='fas fa-comment' />{' '}
               {comments.length > 0 && (
-                <span className='comment-count'> {comments.length}</span>
+                <span className='comment-count'>
+                  {' '}
+                  {comments.length} comments
+                </span>
               )}
             </Link>
             {!auth.loading && user === auth.user._id && (
               <button
                 onClick={() => deletePost(_id)}
                 type='button'
-                className='btn btn-danger'
+                className='btn btn-danger btn-sml'
               >
-                <i className='fas fa-trash' /> Delete
+                <i className='fas fa-trash' />
               </button>
             )}
           </Fragment>

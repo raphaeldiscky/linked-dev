@@ -27,7 +27,7 @@ const Dashboard = ({
     deleteAccount();
   };
 
-  return !profile && loading ? (
+  return loading && !profile ? (
     <Spinner />
   ) : (
     <motion.div
@@ -40,7 +40,9 @@ const Dashboard = ({
       <p className='lead'>
         <i className='fas fa-user'></i> Welcome {user && user.name}
       </p>
-      {profile ? (
+      {loading ? (
+        <Spinner />
+      ) : profile ? (
         <Fragment>
           <DashboardActions />
           <Experience experience={profile.experience} />
