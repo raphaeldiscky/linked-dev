@@ -15,7 +15,7 @@ const ProfileItem = ({
     <div className='profile bg-light'>
       <img src={avatar} alt='' className='round-img' />
       <div>
-        <h2>{name}</h2>
+        <h3>{name}</h3>
         <p>
           {jobstatus}
           {company && <span> at {company}</span>}

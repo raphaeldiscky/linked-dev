@@ -4,7 +4,7 @@
   --light-cyan: #66fcf2e7;
   --primary-color: #1aabc2;
   --dark-color: #0b0c10;
-  --light-color: #fafafa;
+  --light-color: hsl(0, 0%, 95%);
   --danger-color: #dc3545;
   --success-color: #28a745;
   --grey-color: #1f2833;
@@ -86,6 +86,11 @@ html {
 
 .lead {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.lead-med {
+  font-size: 1.3rem;
   margin-bottom: 1rem;
 }
 

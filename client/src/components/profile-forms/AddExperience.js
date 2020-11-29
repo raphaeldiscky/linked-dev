@@ -30,7 +30,7 @@ const AddExperience = ({ addExperience, history }) => {
     >
       <Meta title={'Add Experience'} />
       <h1 className='large text-primary'>Add An Experience</h1>
-      <p className='lead'>
+      <p className='lead-med'>
         <i className='fas fa-code-branch' /> Add any developer/programming
         positions that you have had in the past
       </p>

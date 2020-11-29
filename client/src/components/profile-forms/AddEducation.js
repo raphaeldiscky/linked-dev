@@ -38,7 +38,7 @@ const AddEducation = ({ addEducation, history }) => {
     >
       <Meta title='Add Education' />
       <h1 className='large text-primary'>Add Your Education</h1>
-      <p className='lead'>
+      <p className='lead-med'>
         <i className='fas fa-code-branch' /> Add any school that you have
         attended
       </p>
