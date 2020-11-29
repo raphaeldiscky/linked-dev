@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -32,8 +32,8 @@ const Dashboard = ({
   ) : (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.5, delayduration: 1 }}
+      animate={{ opacity: 4 }}
+      transition={{ delay: 0.7, delayduration: 2 }}
     >
       <Meta title={'Dashboard'} />
       <h1 className='large text-primary'>Dashboard</h1>
@@ -43,7 +43,7 @@ const Dashboard = ({
       {loading ? (
         <Spinner />
       ) : profile ? (
-        <Fragment>
+        <div>
           <DashboardActions />
           <Experience experience={profile.experience} />
           <Education education={profile.education} />
@@ -56,14 +56,14 @@ const Dashboard = ({
               handleDelete={deleteAccountHandler}
             />
           </div>
-        </Fragment>
+        </div>
       ) : (
-        <Fragment>
+        <div>
           <p>You have not yet setup a profile, please add some info</p>
           <Link to='/create-profile' className='btn btn-primary my-1'>
             Create Profile
           </Link>
-        </Fragment>
+        </div>
       )}
     </motion.div>
   );
