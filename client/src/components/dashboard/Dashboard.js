@@ -61,7 +61,7 @@ const Dashboard = ({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 6, delayduration: 2 }}
+          transition={{ delay: 0.5, duration: 2, delayduration: 2 }}
         >
           <p>You have not yet setup a profile, please add some info</p>
           <Link to='/create-profile' className='btn btn-primary my-1'>
