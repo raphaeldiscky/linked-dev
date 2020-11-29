@@ -32,8 +32,8 @@ const Dashboard = ({
   ) : (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 4 }}
-      transition={{ delay: 0.7, delayduration: 2 }}
+      animate={{ opacity: 5 }}
+      transition={{ delay: 0.5, delayduration: 2 }}
     >
       <Meta title={'Dashboard'} />
       <h1 className='large text-primary'>Dashboard</h1>
@@ -58,12 +58,16 @@ const Dashboard = ({
           </div>
         </div>
       ) : (
-        <div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 5 }}
+          transition={{ delay: 0.5, delayduration: 2 }}
+        >
           <p>You have not yet setup a profile, please add some info</p>
           <Link to='/create-profile' className='btn btn-primary my-1'>
             Create Profile
           </Link>
-        </div>
+        </motion.div>
       )}
     </motion.div>
   );
