@@ -8,9 +8,9 @@ const normalize = require('normalize-url');
 
 const User = require('../../models/User');
 
-// @route   POST api/users
+// @route   POST api/users => http://localhost:5000/api/users
 // @desc    Register route
-// @access  Public (doesn't need a token)
+// @access  Public
 router.post(
   '/',
   [
@@ -23,20 +23,23 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
+    // if there's error return status 400 and send error message
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
+    // Destructure the req.body
     const { name, email, password } = req.body;
 
     try {
-      // See if user exists
+      // Check if user exists
       let user = await User.findOne({ email });
       if (user) {
         return res
-          .status(400)
+          .status(400) // bad request
           .json({ errors: [{ msg: 'User already exists' }] });
       }
+
       // Get users gravatar
       const avatar = normalize(
         gravatar.url(email, {
@@ -47,6 +50,7 @@ router.post(
         { forceHttps: true }
       );
 
+      // Create instance of user
       user = new User({
         name,
         email,
@@ -54,31 +58,33 @@ router.post(
         password
       });
 
-      // Encrypt password
+      // Encrypt password with hash and salt
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
 
+      // Save new user to database with encrypted password
       await user.save();
 
-      // Return jsonwebtoken (if user get token, then user can login right away)
+      // Add user.id in payload
       const payload = {
         user: {
           id: user.id
         }
       };
 
+      // Generate new token with the id in the payload
       jwt.sign(
         payload,
         process.env.JWT_SECRET,
         { expiresIn: '1h' },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json({ token }); // return jsonwebtoken (if user get token, then user can login right away)
         }
       );
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server error');
+      res.status(500).send('Server error'); // Internal server error
     }
   }
 );

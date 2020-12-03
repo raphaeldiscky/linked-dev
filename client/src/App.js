@@ -21,10 +21,10 @@ if (localStorage.token) {
 }
 
 const App = () => {
-  // dispatch loadUser
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+  /*wrap all component in provider, so we can use redux*/
   return (
     <Provider store={store}>
       <Router>

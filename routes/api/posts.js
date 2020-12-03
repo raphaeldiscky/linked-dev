@@ -4,7 +4,6 @@ const { check, validationResult } = require('express-validator');
 const authorize = require('../../middleware/authorize');
 
 const Post = require('../../models/Post');
-const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 // @route   POST api/posts
@@ -15,6 +14,7 @@ router.post(
   [authorize, [check('text', 'Text is required').not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
+    // if there's error return status 400 and send error message
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }

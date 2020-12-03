@@ -7,11 +7,12 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../../models/User');
 
-// @route   GET api/auth
+// @route   GET api/auth => http://localhost:5000/api/auth
 // @desc    Get user data
-// @access  Public (doesn't need a token)
+// @access  Public
 router.get('/', authorize, async (req, res) => {
   try {
+    // get user data without password
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
   } catch (err) {
@@ -20,9 +21,9 @@ router.get('/', authorize, async (req, res) => {
   }
 });
 
-// @route   POST api/auth
+// @route   POST api/auth => http://localhost:5000/api/auth
 // @desc    Login route
-// @access  Public (doesn't need a token)
+// @access  Public
 router.post(
   '/',
   [
@@ -33,22 +34,24 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
+    // if there's error return status 400 and send error message
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
+    // Destructure the req.body
     const { email, password } = req.body;
 
     try {
-      // See if user exists
+      // Check if user exists
       let user = await User.findOne({ email });
       if (!user) {
         return res
-          .status(400)
+          .status(400) // Bad request
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
-      // Compare email and password if it's a match
+      // Compare password if it's a match
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
         return res
@@ -56,13 +59,14 @@ router.post(
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
-      // Return jsonwebtoken (if user get token, then user can login right away)
+      // Add user.id in payload
       const payload = {
         user: {
           id: user.id
         }
       };
 
+      // Generate token
       jwt.sign(
         payload,
         process.env.JWT_SECRET,
@@ -74,7 +78,7 @@ router.post(
       );
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server error');
+      res.status(500).send('Server error'); // Server internal error
     }
   }
 );

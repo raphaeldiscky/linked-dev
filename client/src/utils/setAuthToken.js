@@ -1,4 +1,4 @@
-// check if the token is there it's going to add it to the headers if not it's gonna delete it from the headers
+// Check if the token is there it's going to add it to the headers if not it's gonna delete it from the headers
 import axios from 'axios';
 
 const setAuthToken = (token) => {

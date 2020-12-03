@@ -15,7 +15,7 @@ const Register = ({ setAlertDanger, register, isAuthenticated }) => {
     password: '',
     password2: ''
   });
-  // pull out name, email, pass, so we don't need to use formData.name, formData.email, etc
+  // Destructure formData
   const { name, email, password, password2 } = formData;
 
   const onChange = (e) =>
@@ -23,14 +23,16 @@ const Register = ({ setAlertDanger, register, isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if password match
     if (password !== password2) {
-      setAlertDanger('Passwords do not match'); //'danger' is from App.css
+      setAlertDanger('Passwords do not match');
     } else {
       register({ name, email, password });
     }
   };
 
-  // Redirect if sign up
+  // Redirect to dashboard if isAuthenticated is true
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
@@ -104,7 +106,7 @@ Register.propTypes = {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated
-  // we get all initialState from auth reducer, but will only isAuthenticated
+  // we get all initialState from auth reducer, but only isAuthenticated
 });
 
 export default connect(mapStateToProps, { setAlertDanger, register })(Register);

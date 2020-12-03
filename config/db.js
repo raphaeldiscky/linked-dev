@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
+    // connect mongoose to mongoDB atlas => cloud database for mongoDB
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -11,8 +12,7 @@ const connectDB = async () => {
     console.log('MongoDB connected..');
   } catch (err) {
     console.error(err.message);
-    // Exit process with failure
-    process.exit(1);
+    process.exit(1); // exit with failure code 1
   }
 };
 

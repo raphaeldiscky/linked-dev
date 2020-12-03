@@ -10,14 +10,15 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem('token'), // get token from local storage
   isAuthenticated: null,
   loading: true,
   user: null
 };
 
 export default function (state = initialState, action) {
-  const { type, payload } = action; // payload is object
+  // destructure action
+  const { type, payload } = action;
   switch (type) {
     case USER_LOADED:
       return {
@@ -25,14 +26,14 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
         user: payload
-        // payload include user => name, email, avatar from api/auth
+        // payload is user object with name, email, and avatar
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem('token', payload.token);
+      localStorage.setItem('token', payload.token); // add token in local storage
       return {
-        ...state, // state is immutable
-        ...payload,
+        ...state, // return everything in state with spread operator (...)
+        ...payload, // return everyting in payload
         isAuthenticated: true,
         loading: false
       };
@@ -44,7 +45,7 @@ export default function (state = initialState, action) {
       localStorage.removeItem('token');
       return {
         ...state,
-        token: null, //remove token from local storage
+        token: null, // remove token from local storage
         isAuthenticated: false,
         loading: false,
         user: null
